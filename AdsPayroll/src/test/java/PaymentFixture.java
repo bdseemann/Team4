@@ -25,4 +25,12 @@ public class PaymentFixture {
         return this.subject.getGrossPay().toCleanString();
     }
 
+    public String federalIncomeTax() {
+        return this.subject.getFederalIncomeTax().toCleanString();
+    }
+
+    public String netPay() {
+        return this.subject.getNetPay().toCleanString();
+    }
+
 }

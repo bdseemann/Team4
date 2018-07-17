@@ -12,7 +12,6 @@ public class EmployeeTest {
     public void calculatesBasePay() {
 
         Employee subject = new Employee();
-        subject.setName("Bob");
         subject.setHourlyRate(Dollars.parse("5"));
         subject.setHoursWorked(5d);
 
@@ -26,7 +25,6 @@ public class EmployeeTest {
     public void calculatesGrossPay() {
 
         Employee subject = new Employee();
-        subject.setName("Bob");
         subject.setHourlyRate(Dollars.parse("250"));
         subject.setHoursWorked(10d);
 
@@ -34,5 +32,31 @@ public class EmployeeTest {
 
         assertTrue(result);
         assertEquals(Dollars.parse("2500.00"), subject.getGrossPay());
+    }
+
+    @Test
+    public void calculatesFederalIncomeTax() {
+
+        Employee subject = new Employee();
+        subject.setHourlyRate(Dollars.parse("10"));
+        subject.setHoursWorked(10d);
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("25.00"), subject.getFederalIncomeTax());
+    }
+
+    @Test
+    public void calculatesNetPay() {
+
+        Employee subject = new Employee();
+        subject.setHourlyRate(Dollars.parse("10"));
+        subject.setHoursWorked(10d);
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("75.00"), subject.getNetPay());
     }
 }

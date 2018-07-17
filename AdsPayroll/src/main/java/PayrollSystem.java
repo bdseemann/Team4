@@ -16,9 +16,15 @@ public class PayrollSystem {
         return employees;
     }
 
-    public void pay() {
-        for (Employee employee: employees) {
-            employee.setBasePay(employee.getHourlyRate().times(employee.getHoursWorked()));
+    public boolean pay() {
+        try {
+            for (Employee employee : employees) {
+                employee.setBasePay(employee.getHourlyRate().times(employee.getHoursWorked()));
+            }
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return false;
         }
     }
 }

@@ -1,41 +1,28 @@
-import org.joda.money.Money;
-
 public class PaymentFixture {
-    private String name;
-    private Money hourlyRate;
-    private int hoursWorked;
 
-    public String getName() {
-        return name;
-    }
+    private PayrollSystem subject = new PayrollSystem();
+    private Employee employee = new Employee();
 
     public void setName(String name) {
-        this.name = name;
+        this.employee.setName(name);
     }
 
-    public Money getHourlyRate() {
-        return hourlyRate;
+    public void setHourlyRate(String hourlyRate) {
+        this.employee.setHourlyRate(Dollars.parse(hourlyRate));
     }
 
-    public void setHourlyRate(Money hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    public void setHoursWorked(double hoursWorked) {
+        this.employee.setHoursWorked(hoursWorked);
     }
 
-    public int getHoursWorked() {
-        return hoursWorked;
+    public boolean pay() {
+        subject.addEmployee(employee);
+
+        return subject.pay();
     }
 
-    public void setHoursWorked(int hoursWorked) {
-        this.hoursWorked = hoursWorked;
-    }
-
-    public boolean isPay() {
-        return true;
-    }
-
-
-    public Money basePay() {
-        return hourlyRate.multipliedBy(hoursWorked);
+    public String basePay() {
+        return subject.getEmployees().get(0).getBasePay().toCleanString();
     }
 
 }

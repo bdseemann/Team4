@@ -1,15 +1,12 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.ClassRule;
 import org.junit.Test;
 
 /**
  * Created by adeweese on 7/17/2018.
  */
 public class EmployeeTest {
-	@ClassRule
-	public static CustomRule classRule = new CustomRule();
     @Test
     public void calculatesBasePay() {
 

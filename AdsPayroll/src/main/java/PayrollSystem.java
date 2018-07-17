@@ -19,7 +19,7 @@ public class PayrollSystem {
     public boolean pay() {
         try {
             for (Employee employee : employees) {
-                employee.setBasePay(employee.getHourlyRate().times(employee.getHoursWorked()));
+                employee.pay();
             }
             return true;
         } catch (Exception e) {

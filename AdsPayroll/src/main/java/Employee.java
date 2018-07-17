@@ -39,4 +39,14 @@ public class Employee {
     public void setHoursWorked(double hoursWorked) {
         this.hoursWorked = hoursWorked;
     }
+
+    public boolean pay() {
+        try {
+            this.setBasePay(this.getHourlyRate().times(this.getHoursWorked()));
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+            return false;
+        }
+    }
 }

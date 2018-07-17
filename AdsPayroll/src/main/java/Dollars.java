@@ -5,7 +5,7 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 
 public class Dollars {
-	
+	//Money!!!  Its a gas.
 	private Money money;
 
 	public Dollars(Money money) {

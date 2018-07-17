@@ -8,8 +8,19 @@ public class Employee {
     private Dollars basePay;
     private double hoursWorked;
 	private Dollars grossPay;
+    private Dollars federalIncomeTax;
 
-	public Dollars getHourlyRate() {
+    public Dollars getNetPay() {
+        return netPay;
+    }
+
+    public void setNetPay(Dollars netPay) {
+        this.netPay = netPay;
+    }
+
+    private Dollars netPay;
+
+    public Dollars getHourlyRate() {
         return hourlyRate;
     }
 
@@ -45,6 +56,8 @@ public class Employee {
         try {
             this.setBasePay(this.getHourlyRate().times(this.getHoursWorked()));
 			this.setGrossPay(this.getBasePay());
+            this.setFederalIncomeTax(this.getGrossPay().times(0.25d));
+            this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()));
             return true;
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
@@ -59,4 +72,12 @@ public class Employee {
 	public void setGrossPay(Dollars grossPay) {
 		this.grossPay = grossPay;
 	}
+
+    public Dollars getFederalIncomeTax() {
+        return federalIncomeTax;
+    }
+
+    public void setFederalIncomeTax(Dollars federalIncomeTax) {
+        this.federalIncomeTax = federalIncomeTax;
+    }
 }

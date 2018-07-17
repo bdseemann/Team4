@@ -9,7 +9,12 @@ public class HookUpTest {
 	public void hookUp() {
 		assertTrue(true);
 	}
-	
+
+	@Test
+	public void redIcon() {
+		assertTrue(false);
+	}
+
 	@Test
 	public void roundTrip()  {
 		NameMerger merger = new NameMerger();

@@ -9,7 +9,7 @@ public class HookUpTest {
 	public void hookUp() {
 		assertTrue(true);
 	}
-	
+
 	@Test
 	public void roundTrip()  {
 		NameMerger merger = new NameMerger();

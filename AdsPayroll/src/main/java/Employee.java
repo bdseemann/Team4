@@ -7,8 +7,9 @@ public class Employee {
     private Dollars hourlyRate;
     private Dollars basePay;
     private double hoursWorked;
+	private Dollars grossPay;
 
-    public Dollars getHourlyRate() {
+	public Dollars getHourlyRate() {
         return hourlyRate;
     }
 
@@ -43,10 +44,19 @@ public class Employee {
     public boolean pay() {
         try {
             this.setBasePay(this.getHourlyRate().times(this.getHoursWorked()));
+			this.setGrossPay(this.getBasePay());
             return true;
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
             return false;
         }
     }
+
+	public Dollars getGrossPay() {
+		return grossPay;
+	}
+
+	public void setGrossPay(Dollars grossPay) {
+		this.grossPay = grossPay;
+	}
 }

@@ -22,7 +22,7 @@ public class PaymentFixture {
     }
 
     public String grossPay() {
-        return this.basePay();
+        return this.subject.getGrossPay().toCleanString();
     }
 
 }

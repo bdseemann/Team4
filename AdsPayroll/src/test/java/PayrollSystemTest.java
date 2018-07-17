@@ -1,0 +1,21 @@
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by adeweese on 7/17/2018.
+ */
+public class PayrollSystemTest {
+
+    @Test
+    public void addEmployee() {
+        PayrollSystem subject = new PayrollSystem();
+        Employee employee = new Employee();
+        employee.setName("Bob");
+
+        subject.addEmployee(employee);
+
+        assertEquals(1, subject.getEmployees().size());
+    }
+
+}

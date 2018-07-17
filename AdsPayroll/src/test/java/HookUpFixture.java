@@ -17,7 +17,7 @@ public class HookUpFixture  {
 	
 		NameMerger merger = new NameMerger();
 		String result = merger.merge(firstName, lastName);
-		return "dave is making an assumption";
+		return result;
 	}
 
 }

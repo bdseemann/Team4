@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,7 +12,13 @@ public class PayrollSystem {
         employees.add(employee);
     }
 
-    public Collection<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
+    }
+
+    public void pay() {
+        for (Employee employee: employees) {
+            employee.setBasePay(employee.getHourlyRate().times(employee.getHoursWorked()));
+        }
     }
 }

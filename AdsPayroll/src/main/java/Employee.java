@@ -5,6 +5,8 @@ public class Employee {
 
     private String name;
     private Dollars hourlyRate;
+    private Dollars basePay;
+    private double hoursWorked;
 
     public Dollars getHourlyRate() {
         return hourlyRate;
@@ -20,5 +22,21 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Dollars getBasePay() {
+        return basePay;
+    }
+
+    public void setBasePay(Dollars basePay) {
+        this.basePay = basePay;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
     }
 }

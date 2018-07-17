@@ -18,4 +18,17 @@ public class PayrollSystemTest {
         assertEquals(1, subject.getEmployees().size());
     }
 
+    @Test
+    public void payEmployee() {
+        PayrollSystem subject = new PayrollSystem();
+        Employee employee = new Employee();
+        employee.setName("Bob");
+        employee.setHourlyRate(Dollars.parse("5"));
+        employee.setHoursWorked(5d);
+        subject.addEmployee(employee);
+
+        subject.pay();
+
+        assertEquals(Dollars.parse("25.00"), subject.getEmployees().get(0).getBasePay());
+    }
 }

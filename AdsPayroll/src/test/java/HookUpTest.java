@@ -11,11 +11,6 @@ public class HookUpTest {
 	}
 
 	@Test
-	public void redIcon() {
-		assertTrue(false);
-	}
-
-	@Test
 	public void roundTrip()  {
 		NameMerger merger = new NameMerger();
 		String result = merger.merge("Steve", "McQueen");

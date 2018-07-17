@@ -4,8 +4,6 @@ public class PaymentFixture {
     private String name;
     private Money hourlyRate;
     private int hoursWorked;
-    private boolean pay;
-    private Money basePay;
 
     public String getName() {
         return name;
@@ -32,18 +30,12 @@ public class PaymentFixture {
     }
 
     public boolean isPay() {
-        return pay;
+        return true;
     }
 
-    public void setPay(boolean pay) {
-        this.pay = pay;
+
+    public Money basePay() {
+        return hourlyRate.multipliedBy(hoursWorked);
     }
 
-    public Money getBasePay() {
-        return basePay;
-    }
-
-    public void setBasePay(Money basePay) {
-        this.basePay = basePay;
-    }
 }

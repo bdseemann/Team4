@@ -64,6 +64,51 @@ public class EmployeeTest {
     }
 
     @Test
+    public void calculatesStateTaxMichigan() {
+
+        Employee subject = new Employee();
+        subject.setType("HOURLY");
+        subject.setHourlyRate(Dollars.parse("10"));
+        subject.setHoursWorked(10d);
+        subject.setState("MI");
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("3.95"), subject.getStateTax());
+    }
+
+    @Test
+    public void calculatesStateTaxWisconsin() {
+
+        Employee subject = new Employee();
+        subject.setType("HOURLY");
+        subject.setHourlyRate(Dollars.parse("10"));
+        subject.setHoursWorked(10d);
+        subject.setState("WI");
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("5.10"), subject.getStateTax());
+    }
+
+    @Test
+    public void calculatesStateTaxIllinois() {
+
+        Employee subject = new Employee();
+        subject.setType("HOURLY");
+        subject.setHourlyRate(Dollars.parse("10"));
+        subject.setHoursWorked(10d);
+        subject.setState("IL");
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("4.60"), subject.getStateTax());
+    }
+
+    @Test
     public void calculatesNetPay() {
 
         Employee subject = new Employee();

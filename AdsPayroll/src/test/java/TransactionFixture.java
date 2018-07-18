@@ -11,7 +11,7 @@ public class TransactionFixture {
 
     public void setData(String data) {
         if ("HoursWorked".equals(transactionType)) {
-            employee.setHoursWorked(Double.parseDouble(data));
+            employee.getAccount().setHoursWorked(Double.parseDouble(data));
         }
     }
 

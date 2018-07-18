@@ -10,7 +10,7 @@ public class PaymentFixture {
     }
 
     public void setHoursWorked(double hoursWorked) {
-        this.subject.setHoursWorked(hoursWorked);
+        this.subject.getAccount().setHoursWorked(hoursWorked);
     }
 
     public boolean pay() {
@@ -18,19 +18,19 @@ public class PaymentFixture {
     }
 
     public String basePay() {
-        return this.subject.getBasePay().toCleanString();
+        return this.subject.getAccount().getBasePay().toCleanString();
     }
 
     public String grossPay() {
-        return this.subject.getGrossPay().toCleanString();
+        return this.subject.getAccount().getGrossPay().toCleanString();
     }
 
     public String federalIncomeTax() {
-        return this.subject.getFederalIncomeTax().toCleanString();
+        return this.subject.getAccount().getFederalIncomeTax().toCleanString();
     }
 
     public String netPay() {
-        return this.subject.getNetPay().toCleanString();
+        return this.subject.getAccount().getNetPay().toCleanString();
     }
 
 }

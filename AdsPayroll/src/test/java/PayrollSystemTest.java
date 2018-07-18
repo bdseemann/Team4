@@ -24,11 +24,11 @@ public class PayrollSystemTest {
         Employee employee = new Employee();
         employee.setName("Bob");
         employee.setHourlyRate(Dollars.parse("5"));
-        employee.setHoursWorked(5d);
+        employee.getAccount().setHoursWorked(5d);
         subject.addEmployee(employee);
 
         subject.pay();
 
-        assertEquals(Dollars.parse("25.00"), subject.getEmployees().get(0).getBasePay());
+        assertEquals(Dollars.parse("25.00"), subject.getEmployees().get(0).getAccount().getBasePay());
     }
 }

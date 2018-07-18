@@ -1,18 +1,27 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by adeweese on 7/17/2018.
  */
-public class EmployeeTest {
+public class EmployeeAccountTest {
+	private Employee employee;
+	private EmployeeAccount subject;
+	@Before
+	public void before() {
+		employee = new Employee();
+		subject = new EmployeeAccount();
+		employee.setAccount(subject);
+	}
+
     @Test
     public void hourlyCalculatesBasePay() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("5"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("5"));
         subject.setHoursWorked(5d);
 
         boolean result = subject.pay();
@@ -24,9 +33,8 @@ public class EmployeeTest {
     @Test
     public void salaryCalculatesBasePay() {
 
-        Employee subject = new Employee();
-        subject.setType("SALARY");
-        subject.setHourlyRate(Dollars.parse("5000"));
+		employee.setType("SALARY");
+		employee.setHourlyRate(Dollars.parse("5000"));
         subject.setHoursWorked(5d);
 
         boolean result = subject.pay();
@@ -38,9 +46,8 @@ public class EmployeeTest {
     @Test
     public void calculatesGrossPay() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("250"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("250"));
         subject.setHoursWorked(10d);
 
         boolean result = subject.pay();
@@ -52,9 +59,8 @@ public class EmployeeTest {
     @Test
     public void calculatesFederalIncomeTax() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("10"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 
         boolean result = subject.pay();
@@ -66,11 +72,10 @@ public class EmployeeTest {
     @Test
     public void calculatesStateTaxMichigan() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("10"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
-        subject.setState("MI");
+		employee.setState("MI");
 
         boolean result = subject.pay();
 
@@ -81,11 +86,10 @@ public class EmployeeTest {
     @Test
     public void calculatesStateTaxWisconsin() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("10"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
-        subject.setState("WI");
+		employee.setState("WI");
 
         boolean result = subject.pay();
 
@@ -96,11 +100,10 @@ public class EmployeeTest {
     @Test
     public void calculatesStateTaxIllinois() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("10"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
-        subject.setState("IL");
+		employee.setState("IL");
 
         boolean result = subject.pay();
 
@@ -111,9 +114,8 @@ public class EmployeeTest {
     @Test
     public void calculatesNetPay() {
 
-        Employee subject = new Employee();
-        subject.setType("HOURLY");
-        subject.setHourlyRate(Dollars.parse("10"));
+		employee.setType("HOURLY");
+		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 
         boolean result = subject.pay();

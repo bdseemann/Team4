@@ -10,7 +10,7 @@ public class Employee {
 	private Dollars grossPay;
     private Dollars federalIncomeTax;
     private String id;
-    private String type;
+    private String type = "HOURLY";
 
     public Dollars getNetPay() {
         return netPay;

@@ -8,9 +8,10 @@ import org.junit.Test;
  */
 public class EmployeeTest {
     @Test
-    public void calculatesBasePay() {
+    public void hourlyCalculatesBasePay() {
 
         Employee subject = new Employee();
+        subject.setType("HOURLY");
         subject.setHourlyRate(Dollars.parse("5"));
         subject.setHoursWorked(5d);
 
@@ -21,9 +22,24 @@ public class EmployeeTest {
     }
 
     @Test
+    public void salaryCalculatesBasePay() {
+
+        Employee subject = new Employee();
+        subject.setType("SALARY");
+        subject.setHourlyRate(Dollars.parse("5000"));
+        subject.setHoursWorked(5d);
+
+        boolean result = subject.pay();
+
+        assertTrue(result);
+        assertEquals(Dollars.parse("5000.00"), subject.getBasePay());
+    }
+
+    @Test
     public void calculatesGrossPay() {
 
         Employee subject = new Employee();
+        subject.setType("HOURLY");
         subject.setHourlyRate(Dollars.parse("250"));
         subject.setHoursWorked(10d);
 
@@ -37,6 +53,7 @@ public class EmployeeTest {
     public void calculatesFederalIncomeTax() {
 
         Employee subject = new Employee();
+        subject.setType("HOURLY");
         subject.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 
@@ -50,6 +67,7 @@ public class EmployeeTest {
     public void calculatesNetPay() {
 
         Employee subject = new Employee();
+        subject.setType("HOURLY");
         subject.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 

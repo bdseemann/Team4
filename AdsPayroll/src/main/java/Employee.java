@@ -56,7 +56,11 @@ public class Employee {
 
     public boolean pay() {
         try {
-            this.setBasePay(this.getHourlyRate().times(this.getHoursWorked()));
+            if ("HOURLY".equals(this.type)) {
+                this.setBasePay(this.getHourlyRate().times(this.getHoursWorked()));
+            } else {
+                this.setBasePay(this.getHourlyRate());
+            }
 			this.setGrossPay(this.getBasePay());
             this.setFederalIncomeTax(this.getGrossPay().times(0.25d));
             this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()));

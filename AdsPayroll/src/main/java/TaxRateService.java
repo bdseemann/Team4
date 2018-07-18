@@ -18,4 +18,8 @@ public class TaxRateService {
 	public Double getStateTaxRate(String state) {
 		return taxRates.get(state);
 	}
+
+	public double getFederalTaxRate() {
+		return .25d;
+	}
 }

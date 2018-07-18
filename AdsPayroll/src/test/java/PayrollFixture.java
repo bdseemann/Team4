@@ -26,7 +26,7 @@ public class PayrollFixture {
 	}
 
 	public String stateTax() {
-		return "not implemented";
+		return employee.getStateTax().toCleanString();
 	}
 
 	public String net() {

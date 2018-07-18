@@ -18,6 +18,10 @@ public class EmployeeSetupFixture {
         employee.setHourlyRate(Dollars.parse(payRate));
     }
 
+    public void setState(String state) {
+        employee.setState(state);
+    }
+
     public boolean add() {
         return PayrollSystem.getInstance().addEmployee(employee);
     }

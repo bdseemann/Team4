@@ -11,8 +11,9 @@ public class Employee {
     private Dollars federalIncomeTax;
     private String id;
     private String type = "HOURLY";
+	private String state;
 
-    public Dollars getNetPay() {
+	public Dollars getNetPay() {
         return netPay;
     }
 
@@ -102,4 +103,12 @@ public class Employee {
     public String getType() {
         return type;
     }
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getState() {
+		return state;
+	}
 }

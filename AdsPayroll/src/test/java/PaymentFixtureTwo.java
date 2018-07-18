@@ -1,5 +1,4 @@
 public class PaymentFixtureTwo {
-    private static PayrollSystem payrollSystem = new PayrollSystem();
     private Employee employee;
 
     public void setId(String id) {
@@ -20,11 +19,11 @@ public class PaymentFixtureTwo {
     }
 
     public boolean add() {
-        return payrollSystem.addEmployee(employee);
+        return PayrollSystem.getInstance().addEmployee(employee);
     }
 
     public int size() {
-        return payrollSystem.getEmployees().size();
+        return PayrollSystem.getInstance().getEmployees().size();
     }
 
 }

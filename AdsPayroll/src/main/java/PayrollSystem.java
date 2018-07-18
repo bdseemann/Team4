@@ -6,6 +6,7 @@ import java.util.List;
  */
 public class PayrollSystem {
 
+    private static PayrollSystem instance = new PayrollSystem();
     private List<Employee> employees = new ArrayList<Employee>();
 
     public boolean addEmployee(Employee employee) {
@@ -26,5 +27,9 @@ public class PayrollSystem {
             System.err.println(e.getStackTrace());
             return false;
         }
+    }
+
+    public static PayrollSystem getInstance() {
+        return instance;
     }
 }

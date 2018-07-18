@@ -83,23 +83,9 @@ public class EmployeeAccount {
 
 	private Dollars calculateStateTax() {
 		Dollars stateTax = Dollars.parse("0");
-		if (getEmployee().getState() != null) {
-			switch (getEmployee().getState()) {
-				case "MI": {
-					stateTax = this.getBasePay().times(.0395d);
-					break;
-				}
-				case "WI": {
-					stateTax = this.getBasePay().times(.0510d);
-					break;
-				}
-				case "IL": {
-					stateTax = this.getBasePay().times(.0460d);
-					break;
-				}
-				default: {
-				}
-			}
+		Double taxRate = TaxRateService.getInstance().getStateTaxRate(getEmployee().getState());
+		if (taxRate != null) {
+			stateTax = this.getBasePay().times(taxRate);
 		}
 		return stateTax;
 	}

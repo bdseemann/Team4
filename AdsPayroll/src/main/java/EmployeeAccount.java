@@ -67,7 +67,7 @@ public class EmployeeAccount {
 		try {
 			this.setBasePay(calculateBasePay());
 			this.setGrossPay(this.getBasePay());
-			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getInstance().getFederalTaxRate()));
+			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalTaxRate()));
 			this.setStateTax(calculateStateTax());
 			this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
 			return true;
@@ -87,7 +87,7 @@ public class EmployeeAccount {
 
 	private Dollars calculateStateTax() {
 		Dollars stateTax = Dollars.parse("0");
-		Double taxRate = TaxRateService.getInstance().getStateTaxRate(getEmployee().getState());
+		Double taxRate = TaxRateService.getStateTaxRate(getEmployee().getState());
 		if (taxRate != null) {
 			stateTax = this.getBasePay().times(taxRate);
 		}

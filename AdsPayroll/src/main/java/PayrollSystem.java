@@ -17,6 +17,15 @@ public class PayrollSystem {
         return employees;
     }
 
+    public Employee getEmployee(String id) {
+        for (Employee employee : employees) {
+            if (id.equals(employee.getId())) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
     public boolean pay() {
         try {
             for (Employee employee : employees) {

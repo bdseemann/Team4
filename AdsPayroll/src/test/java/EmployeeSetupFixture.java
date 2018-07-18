@@ -1,11 +1,11 @@
-public class PaymentFixtureTwo {
+public class EmployeeSetupFixture {
     private Employee employee;
 
     public void setId(String id) {
         employee = new Employee();
         employee.setId(id);
-
     }
+
     public void setName(String name) {
         employee.setName(name);
 

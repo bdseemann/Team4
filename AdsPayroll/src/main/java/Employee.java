@@ -9,6 +9,8 @@ public class Employee {
     private double hoursWorked;
 	private Dollars grossPay;
     private Dollars federalIncomeTax;
+    private String id;
+    private String type;
 
     public Dollars getNetPay() {
         return netPay;
@@ -79,5 +81,21 @@ public class Employee {
 
     public void setFederalIncomeTax(Dollars federalIncomeTax) {
         this.federalIncomeTax = federalIncomeTax;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }

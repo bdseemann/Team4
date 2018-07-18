@@ -8,8 +8,8 @@ public class PayrollSystem {
 
     private List<Employee> employees = new ArrayList<Employee>();
 
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
+    public boolean addEmployee(Employee employee) {
+        return employees.add(employee);
     }
 
     public List<Employee> getEmployees() {

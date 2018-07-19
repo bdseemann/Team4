@@ -51,4 +51,9 @@ public class PayrollSystem {
     public static PayrollSystem getInstance() {
         return instance;
     }
+
+    public boolean reset() {
+        instance = new PayrollSystem();
+        return true;
+    }
 }

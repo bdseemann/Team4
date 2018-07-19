@@ -1,6 +1,10 @@
 public class EmployeeSetupFixture {
     private Employee employee;
 
+    public boolean clearEmployees(){
+        return PayrollSystem.getInstance().reset();
+    }
+
     public void setId(String id) {
         employee = new Employee();
         employee.setId(id);

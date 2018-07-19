@@ -39,26 +39,26 @@ public class PayrollFixture {
 	}
 
 	public String qtdGross() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getQtdGross().toCleanString();
 	}
 
 	public String qtdTax() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getQtdTax().toCleanString();
 	}
 
 	public String qtdNet() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getQtdNet().toCleanString();
 	}
 
 	public String ytdGross() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getYtdGross().toCleanString();
 	}
 
 	public String ytdTax() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getYtdTax().toCleanString();
 	}
 
 	public String ytdNet() {
-		return "Not Implemented";
+		return employee.getLastPaidAccount().getYtdNet().toCleanString();
 	}
 }

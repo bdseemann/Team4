@@ -7,6 +7,12 @@ public class EmployeeAccount {
 	private Dollars stateTax;
 	private Dollars netPay;
 	private boolean paid;
+	private Dollars qtdGross = Dollars.parse("0");
+	private Dollars qtdTax = Dollars.parse("0");
+	private Dollars qtdNet = Dollars.parse("0");
+	private Dollars ytdGross = Dollars.parse("0");
+	private Dollars ytdTax = Dollars.parse("0");
+	private Dollars ytdNet = Dollars.parse("0");
 
 	public Employee getEmployee() {
 		return employee;
@@ -102,5 +108,53 @@ public class EmployeeAccount {
 			stateTax = this.getBasePay().times(taxRate);
 		}
 		return stateTax;
+	}
+
+	public Dollars getQtdGross() {
+		return qtdGross;
+	}
+
+	public void setQtdGross(Dollars qtdGross) {
+		this.qtdGross = qtdGross;
+	}
+
+	public Dollars getQtdTax() {
+		return qtdTax;
+	}
+
+	public void setQtdTax(Dollars qtdTax) {
+		this.qtdTax = qtdTax;
+	}
+
+	public Dollars getQtdNet() {
+		return qtdNet;
+	}
+
+	public void setQtdNet(Dollars qtdNet) {
+		this.qtdNet = qtdNet;
+	}
+
+	public Dollars getYtdGross() {
+		return ytdGross;
+	}
+
+	public void setYtdGross(Dollars ytdGross) {
+		this.ytdGross = ytdGross;
+	}
+
+	public Dollars getYtdTax() {
+		return ytdTax;
+	}
+
+	public void setYtdTax(Dollars ytdTax) {
+		this.ytdTax = ytdTax;
+	}
+
+	public Dollars getYtdNet() {
+		return ytdNet;
+	}
+
+	public void setYtdNet(Dollars ytdNet) {
+		this.ytdNet = ytdNet;
 	}
 }

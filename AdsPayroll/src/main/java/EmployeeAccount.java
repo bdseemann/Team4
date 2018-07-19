@@ -67,7 +67,7 @@ public class EmployeeAccount {
 		try {
 			this.setBasePay(calculateBasePay());
 			this.setGrossPay(this.getBasePay());
-			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalTaxRate()));
+			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
 			this.setStateTax(calculateStateTax());
 			this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
 			return true;

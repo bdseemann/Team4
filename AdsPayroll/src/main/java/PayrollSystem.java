@@ -27,10 +27,10 @@ public class PayrollSystem {
         throw new RuntimeException("Employee not found");
     }
 
-    public boolean pay() {
+    public boolean pay(String payDate) {
         try {
             for (Employee employee : employees) {
-                employee.getOpenAcount().pay();
+                employee.getOpenAcount().pay(payDate);
             }
             return true;
         } catch (Exception e) {

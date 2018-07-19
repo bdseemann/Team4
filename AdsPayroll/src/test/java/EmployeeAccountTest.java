@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class EmployeeAccountTest {
 	private Employee employee;
 	private EmployeeAccount subject;
+    private String testDate = "1/1/1900";
 	@Before
 	public void before() {
 		employee = new Employee();
@@ -23,7 +24,7 @@ public class EmployeeAccountTest {
 		employee.setHourlyRate(Dollars.parse("5"));
         subject.setHoursWorked(5d);
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("25.00"), subject.getBasePay());
@@ -36,7 +37,7 @@ public class EmployeeAccountTest {
 		employee.setHourlyRate(Dollars.parse("5000"));
         subject.setHoursWorked(5d);
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("5000.00"), subject.getBasePay());
@@ -49,7 +50,7 @@ public class EmployeeAccountTest {
 		employee.setHourlyRate(Dollars.parse("250"));
         subject.setHoursWorked(10d);
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("2500.00"), subject.getGrossPay());
@@ -62,7 +63,7 @@ public class EmployeeAccountTest {
 		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("25.00"), subject.getFederalIncomeTax());
@@ -76,7 +77,7 @@ public class EmployeeAccountTest {
         subject.setHoursWorked(10d);
 		employee.setState("MI");
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("3.95"), subject.getStateTax());
@@ -90,7 +91,7 @@ public class EmployeeAccountTest {
         subject.setHoursWorked(10d);
 		employee.setState("WI");
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("5.10"), subject.getStateTax());
@@ -104,7 +105,7 @@ public class EmployeeAccountTest {
         subject.setHoursWorked(10d);
 		employee.setState("IL");
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("4.60"), subject.getStateTax());
@@ -117,7 +118,7 @@ public class EmployeeAccountTest {
 		employee.setHourlyRate(Dollars.parse("10"));
         subject.setHoursWorked(10d);
 
-        boolean result = subject.pay();
+        boolean result = subject.pay(testDate);
 
         assertTrue(result);
         assertEquals(Dollars.parse("75.00"), subject.getNetPay());

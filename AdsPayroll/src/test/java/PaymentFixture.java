@@ -1,5 +1,6 @@
 public class PaymentFixture {
     private Employee subject;
+    private String testDate = "1/1/1900";
 
     public void setName(String name) {
         subject = new Employee();
@@ -15,7 +16,7 @@ public class PaymentFixture {
     }
 
     public boolean pay() {
-        return this.subject.getOpenAcount().pay();
+        return this.subject.getOpenAcount().pay(testDate);
     }
 
     public String basePay() {

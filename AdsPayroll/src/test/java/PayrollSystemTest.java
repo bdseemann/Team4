@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
  */
 public class PayrollSystemTest {
 
+    private String testDate = "1/1/1900";
+
     @Test
     public void addEmployee() {
         PayrollSystem subject = new PayrollSystem();
@@ -27,7 +29,7 @@ public class PayrollSystemTest {
         employee.getOpenAcount().setHoursWorked(5d);
         subject.addEmployee(employee);
 
-        subject.pay();
+        subject.pay(testDate);
 
         assertEquals(Dollars.parse("25.00"), subject.getEmployees().get(0).getLastPaidAccount().getBasePay());
     }

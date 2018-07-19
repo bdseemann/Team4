@@ -78,7 +78,7 @@ public class EmployeeAccount {
 		this.paid = paid;
 	}
 
-	public boolean pay() {
+	public boolean pay(String payDate) {
 		try {
 			this.setBasePay(calculateBasePay());
 			this.setGrossPay(this.getBasePay());

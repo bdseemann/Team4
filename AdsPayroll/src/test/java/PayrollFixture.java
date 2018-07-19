@@ -7,7 +7,7 @@ public class PayrollFixture {
 	}
 
 	public boolean pay() {
-		return PayrollSystem.getInstance().pay();
+		return PayrollSystem.getInstance().pay(payDate);
 	}
 
 	public void setId(String employeeNumber) {

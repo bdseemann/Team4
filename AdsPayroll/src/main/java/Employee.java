@@ -83,4 +83,8 @@ public class Employee {
 		}
 		throw new RuntimeException("No Paid Account Found");
 	}
+
+	public List<EmployeeAccount> getAccounts() {
+		return checks;
+	}
 }

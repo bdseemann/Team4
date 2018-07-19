@@ -1,6 +1,9 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class EmployeeAccount {
 	private Employee employee;
@@ -84,12 +87,39 @@ public class EmployeeAccount {
 	}
 
 	public boolean pay(String payDateFromData) throws ParseException {
-		this.setPayDate(new SimpleDateFormat("MM/dd/yyyy").parse(payDateFromData));
+		Date payDate = new SimpleDateFormat("MM/dd/yyyy").parse(payDateFromData);
+		this.setPayDate(payDate);
 		this.setBasePay(calculateBasePay());
 		this.setGrossPay(this.getBasePay());
 		this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
 		this.setStateTax(calculateStateTax());
 		this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
+
+		List<EmployeeAccount> accounts = employee.getAccounts();
+
+		for (int i = accounts.size(); i > 0; i--) {
+			EmployeeAccount previousAccount = accounts.get(i-1);
+			Calendar startCalendar = new GregorianCalendar();
+			startCalendar.setTime(previousAccount.getPayDate());
+			Calendar endCalendar = new GregorianCalendar();
+			endCalendar.setTime(payDate);
+
+			int diffYear = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
+			int diffMonth = diffYear * 12 + endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
+
+			if (diffMonth <= 3) {
+				this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
+				this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+				this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
+			}
+
+			if (diffYear == 0) {
+				this.setYtdGross(previousAccount.getYtdGross().plus(this.getGrossPay()));
+				this.setYtdTax(previousAccount.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+				this.setYtdNet(previousAccount.getYtdNet().plus(this.getNetPay()));
+			}
+		}
+
 		this.setPaid(true);
 		return true;
 	}

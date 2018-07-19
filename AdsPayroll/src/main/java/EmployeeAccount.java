@@ -97,7 +97,7 @@ public class EmployeeAccount {
 
 		List<EmployeeAccount> accounts = employee.getAccounts();
 
-		for (int i = accounts.size(); i > 0; i--) {
+		for (int i = accounts.size() - 1; i > 0; i--) {
 			EmployeeAccount previousAccount = accounts.get(i-1);
 			Calendar startCalendar = new GregorianCalendar();
 			startCalendar.setTime(previousAccount.getPayDate());

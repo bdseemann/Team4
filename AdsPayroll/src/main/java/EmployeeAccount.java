@@ -65,13 +65,9 @@ public class EmployeeAccount {
 
 	public boolean pay() {
 		try {
-			if ("HOURLY".equals(getEmployee().getType())) {
-				this.setBasePay(getEmployee().getHourlyRate().times(this.getHoursWorked()));
-			} else {
-				this.setBasePay(getEmployee().getHourlyRate());
-			}
+			this.setBasePay(calculateBasePay());
 			this.setGrossPay(this.getBasePay());
-			this.setFederalIncomeTax(this.getGrossPay().times(0.25d));
+			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalTaxRate()));
 			this.setStateTax(calculateStateTax());
 			this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
 			return true;
@@ -81,9 +77,17 @@ public class EmployeeAccount {
 		}
 	}
 
+	private Dollars calculateBasePay() {
+		if ("HOURLY".equals(getEmployee().getType())) {
+			return getEmployee().getHourlyRate().times(this.getHoursWorked());
+		} else {
+			return getEmployee().getHourlyRate();
+		}
+	}
+
 	private Dollars calculateStateTax() {
 		Dollars stateTax = Dollars.parse("0");
-		Double taxRate = TaxRateService.getInstance().getStateTaxRate(getEmployee().getState());
+		Double taxRate = TaxRateService.getStateTaxRate(getEmployee().getState());
 		if (taxRate != null) {
 			stateTax = this.getBasePay().times(taxRate);
 		}

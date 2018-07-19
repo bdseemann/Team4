@@ -1,7 +1,8 @@
 public class PaymentFixture {
-    private Employee subject = new Employee();
+    private Employee subject;
 
     public void setName(String name) {
+        subject = new Employee();
         this.subject.setName(name);
     }
 

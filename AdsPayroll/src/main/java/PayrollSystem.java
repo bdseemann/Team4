@@ -5,6 +5,7 @@ import java.util.List;
  * Created by adeweese on 7/17/2018.
  */
 public class PayrollSystem {
+    public static final String TRANSACTION_TYPE_HOURS_WORKED = "HoursWorked";
 
     private static PayrollSystem instance = new PayrollSystem();
     private List<Employee> employees = new ArrayList<Employee>();
@@ -40,7 +41,7 @@ public class PayrollSystem {
 
     public void processTransaction(String id, String transactionType, String data) {
         Employee employee = getEmployee(id);
-        if ("HoursWorked".equals(transactionType)) {
+        if (TRANSACTION_TYPE_HOURS_WORKED.equals(transactionType)) {
             employee.getOpenAcount().setHoursWorked(Double.parseDouble(data));
         } else {
             throw new RuntimeException("Unrecognized transaction type");

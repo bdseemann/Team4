@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.text.ParseException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +20,7 @@ public class EmployeeAccountTest {
 	}
 
     @Test
-    public void hourlyCalculatesBasePay() {
+    public void hourlyCalculatesBasePay() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("5"));
@@ -31,7 +33,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void salaryCalculatesBasePay() {
+    public void salaryCalculatesBasePay() throws ParseException {
 
 		employee.setType("SALARY");
 		employee.setHourlyRate(Dollars.parse("5000"));
@@ -44,7 +46,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesGrossPay() {
+    public void calculatesGrossPay() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("250"));
@@ -57,7 +59,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesFederalIncomeTax() {
+    public void calculatesFederalIncomeTax() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("10"));
@@ -70,7 +72,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesStateTaxMichigan() {
+    public void calculatesStateTaxMichigan() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("10"));
@@ -84,7 +86,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesStateTaxWisconsin() {
+    public void calculatesStateTaxWisconsin() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("10"));
@@ -98,7 +100,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesStateTaxIllinois() {
+    public void calculatesStateTaxIllinois() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("10"));
@@ -112,7 +114,7 @@ public class EmployeeAccountTest {
     }
 
     @Test
-    public void calculatesNetPay() {
+    public void calculatesNetPay() throws ParseException {
 
 		employee.setType("HOURLY");
 		employee.setHourlyRate(Dollars.parse("10"));

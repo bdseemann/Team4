@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -82,20 +83,15 @@ public class EmployeeAccount {
 		this.paid = paid;
 	}
 
-	public boolean pay(String payDateFromData) {
-		try {
-			this.setPayDate(new SimpleDateFormat("MM/dd/yyyy").parse(payDateFromData));
-			this.setBasePay(calculateBasePay());
-			this.setGrossPay(this.getBasePay());
-			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
-			this.setStateTax(calculateStateTax());
-			this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
-			this.setPaid(true);
-			return true;
-		} catch (Exception e) {
-			System.err.println(e.getStackTrace());
-			return false;
-		}
+	public boolean pay(String payDateFromData) throws ParseException {
+		this.setPayDate(new SimpleDateFormat("MM/dd/yyyy").parse(payDateFromData));
+		this.setBasePay(calculateBasePay());
+		this.setGrossPay(this.getBasePay());
+		this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
+		this.setStateTax(calculateStateTax());
+		this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
+		this.setPaid(true);
+		return true;
 	}
 
 	private Dollars calculateBasePay() {

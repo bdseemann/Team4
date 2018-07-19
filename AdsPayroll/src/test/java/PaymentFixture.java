@@ -1,3 +1,5 @@
+import java.text.ParseException;
+
 public class PaymentFixture {
     private Employee subject;
     private String testDate = "1/1/1900";
@@ -15,7 +17,7 @@ public class PaymentFixture {
         this.subject.getOpenAcount().setHoursWorked(hoursWorked);
     }
 
-    public boolean pay() {
+    public boolean pay() throws ParseException {
         return this.subject.getOpenAcount().pay(testDate);
     }
 

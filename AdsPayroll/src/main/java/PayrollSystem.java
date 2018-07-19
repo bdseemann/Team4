@@ -23,7 +23,7 @@ public class PayrollSystem {
                 return employee;
             }
         }
-        return null;
+        throw new RuntimeException("Employee not found");
     }
 
     public boolean pay() {
@@ -35,6 +35,15 @@ public class PayrollSystem {
         } catch (Exception e) {
             System.err.println(e.getStackTrace());
             return false;
+        }
+    }
+
+    public void processTransaction(String id, String transactionType, String data) {
+        Employee employee = getEmployee(id);
+        if ("HoursWorked".equals(transactionType)) {
+            employee.getOpenAcount().setHoursWorked(Double.parseDouble(data));
+        } else {
+            throw new RuntimeException("Unrecognized transaction type");
         }
     }
 

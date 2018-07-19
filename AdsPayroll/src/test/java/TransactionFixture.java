@@ -1,8 +1,8 @@
 public class TransactionFixture {
-    private Employee employee;
+    private String employeeNumber;
     private String transactionType;
     public void setEmployeeNumber(String employeeNumber) {
-        employee = PayrollSystem.getInstance().getEmployee(employeeNumber);
+        this.employeeNumber = employeeNumber;
     }
 
     public void setTransactionType(String transactionType) {
@@ -10,10 +10,6 @@ public class TransactionFixture {
     }
 
     public void setData(String data) {
-        if ("HoursWorked".equals(transactionType)) {
-            employee.getOpenAcount().setHoursWorked(Double.parseDouble(data));
-        }
+        PayrollSystem.getInstance().processTransaction(employeeNumber, transactionType, data);
     }
-
-
 }

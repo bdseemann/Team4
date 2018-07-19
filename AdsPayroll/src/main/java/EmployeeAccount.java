@@ -106,7 +106,7 @@ public class EmployeeAccount {
 
 			if (startCalendar.get(Calendar.YEAR) == endCalendar.get(Calendar.YEAR)) {
 
-				if (startCalendar.get(Calendar.MONTH) % 4 == endCalendar.get(Calendar.MONTH) % 4) {
+				if (inSameQuarter(startCalendar.get(Calendar.MONTH), endCalendar.get(Calendar.MONTH))) {
 					this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
 					this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
 					this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
@@ -121,6 +121,25 @@ public class EmployeeAccount {
 
 		this.setPaid(true);
 		return true;
+	}
+
+	private boolean inSameQuarter(int month1, int month2) {
+		if (month1 <= Calendar.MARCH) {
+			if (month2 <= Calendar.MARCH) {
+				return true;
+			}
+		} else if (month1 >= Calendar.APRIL && month1 <= Calendar.JUNE) {
+			if (month2 >= Calendar.APRIL && month2 <= Calendar.JUNE) {
+				return true;
+			}
+		} else if (month1 >= Calendar.JULY && month1 <= Calendar.SEPTEMBER) {
+			if (month2 >= Calendar.JULY && month2 <= Calendar.SEPTEMBER) {
+				return true;
+			}
+		} else if (month1 >= Calendar.OCTOBER && month2 >= Calendar.OCTOBER) {
+			return true;
+		}
+		return false;
 	}
 
 	private Dollars calculateBasePay() {

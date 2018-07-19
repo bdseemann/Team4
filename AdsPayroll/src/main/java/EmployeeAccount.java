@@ -107,14 +107,14 @@ public class EmployeeAccount {
 			if (startCalendar.get(Calendar.YEAR) == endCalendar.get(Calendar.YEAR)) {
 
 				if (inSameQuarter(startCalendar.get(Calendar.MONTH), endCalendar.get(Calendar.MONTH))) {
-					this.setQtdGross(previousAccount.getQtdGross().plus(this.getQtdGross()).plus(this.getGrossPay()));
-					this.setQtdTax(previousAccount.getQtdTax().plus(this.getQtdTax()).plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-					this.setQtdNet(previousAccount.getQtdNet().plus(this.getQtdNet()).plus(this.getNetPay()));
+					this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
+					this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+					this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
 				}
 
-			this.setYtdGross(previousAccount.getYtdGross().plus(this.getYtdGross()).plus(this.getGrossPay()));
-			this.setYtdTax(previousAccount.getYtdTax().plus(this.getYtdTax()).plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-			this.setYtdNet(previousAccount.getYtdNet().plus(this.getYtdNet()).plus(this.getNetPay()));
+			this.setYtdGross(previousAccount.getYtdGross().plus(this.getGrossPay()));
+			this.setYtdTax(previousAccount.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+			this.setYtdNet(previousAccount.getYtdNet().plus(this.getNetPay()));
 
 			}
 		}

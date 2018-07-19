@@ -97,8 +97,9 @@ public class EmployeeAccount {
 
 		List<EmployeeAccount> accounts = employee.getAccounts();
 
-		for (int i = accounts.size(); i > 0; i--) {
-			EmployeeAccount previousAccount = accounts.get(i-1);
+		for (int i = accounts.size() - 2; i >= 0; i--) {
+			EmployeeAccount previousAccount = accounts.get(i);
+
 			Calendar startCalendar = new GregorianCalendar();
 			startCalendar.setTime(previousAccount.getPayDate());
 			Calendar endCalendar = new GregorianCalendar();
@@ -107,17 +108,25 @@ public class EmployeeAccount {
 			if (startCalendar.get(Calendar.YEAR) == endCalendar.get(Calendar.YEAR)) {
 
 				if (inSameQuarter(startCalendar.get(Calendar.MONTH), endCalendar.get(Calendar.MONTH))) {
-					this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
-					this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-					this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
+					this.setQtdGross(this.getQtdGross().plus(previousAccount.getGrossPay()));
+					this.setQtdTax(this.getQtdTax().plus(previousAccount.getFederalIncomeTax()).plus(previousAccount.getStateTax()));
+					this.setQtdNet(this.getQtdNet().plus(previousAccount.getNetPay()));
 				}
 
-			this.setYtdGross(previousAccount.getYtdGross().plus(this.getGrossPay()));
-			this.setYtdTax(previousAccount.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-			this.setYtdNet(previousAccount.getYtdNet().plus(this.getNetPay()));
+				this.setYtdGross(this.getYtdGross().plus(previousAccount.getGrossPay()));
+				this.setYtdTax(this.getYtdTax().plus(previousAccount.getFederalIncomeTax()).plus(previousAccount.getStateTax()));
+				this.setYtdNet(this.getYtdNet().plus(previousAccount.getNetPay()));
 
 			}
 		}
+
+		this.setQtdGross(this.getQtdGross().plus(this.getGrossPay()));
+		this.setQtdTax(this.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+		this.setQtdNet(this.getQtdNet().plus(this.getNetPay()));
+
+		this.setYtdGross(this.getYtdGross().plus(this.getGrossPay()));
+		this.setYtdTax(this.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+		this.setYtdNet(this.getYtdNet().plus(this.getNetPay()));
 
 		this.setPaid(true);
 		return true;

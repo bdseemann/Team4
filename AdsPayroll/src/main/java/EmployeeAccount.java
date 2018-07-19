@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EmployeeAccount {
 	private Employee employee;
 	private Dollars basePay;
@@ -13,6 +16,7 @@ public class EmployeeAccount {
 	private Dollars ytdGross = Dollars.parse("0");
 	private Dollars ytdTax = Dollars.parse("0");
 	private Dollars ytdNet = Dollars.parse("0");
+	private Date payDate;
 
 	public Employee getEmployee() {
 		return employee;
@@ -78,8 +82,9 @@ public class EmployeeAccount {
 		this.paid = paid;
 	}
 
-	public boolean pay(String payDate) {
+	public boolean pay(String payDateFromData) {
 		try {
+			this.setPayDate(new SimpleDateFormat("MM/dd/yyyy").parse(payDateFromData));
 			this.setBasePay(calculateBasePay());
 			this.setGrossPay(this.getBasePay());
 			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
@@ -156,5 +161,13 @@ public class EmployeeAccount {
 
 	public void setYtdNet(Dollars ytdNet) {
 		this.ytdNet = ytdNet;
+	}
+
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
+
+	public Date getPayDate() {
+		return payDate;
 	}
 }

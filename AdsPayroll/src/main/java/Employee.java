@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by adeweese on 7/17/2018.
  */
@@ -7,19 +10,13 @@ public class Employee {
 	private String id;
 	private String type = "HOURLY";
 	private String state;
-	private EmployeeAccount account;
+	private List<EmployeeAccount> checks = new ArrayList<EmployeeAccount>();
 
 	public Employee() {
-		this.setAccount(new EmployeeAccount());
 	}
 
-	public EmployeeAccount getAccount() {
-		return account;
-	}
-
-	public void setAccount(EmployeeAccount account) {
-		this.account = account;
-		account.setEmployee(this);
+	public List<EmployeeAccount> getChecks() {
+		return checks;
 	}
 
 	public Dollars getHourlyRate() {
@@ -36,10 +33,6 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public boolean pay() {
-		return getAccount().pay();
 	}
 
 	public String getId() {
@@ -64,5 +57,30 @@ public class Employee {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public void addCheck(EmployeeAccount check) {
+		checks.add(check);
+	}
+
+	public EmployeeAccount getOpenAcount() {
+		for (EmployeeAccount account : checks) {
+			if (!account.isPaid()) {
+				return account;
+			}
+		}
+		EmployeeAccount newAccount = new EmployeeAccount();
+		newAccount.setEmployee(this);
+		checks.add(newAccount);
+		return newAccount;
+	}
+
+	public EmployeeAccount getLastPaidAccount() {
+		for (int i = checks.size() - 1; i == 0; i--) {
+			if (checks.get(i).isPaid()) {
+				return checks.get(i);
+			}
+		}
+		throw new RuntimeException("No Paid Account Found");
 	}
 }

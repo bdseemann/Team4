@@ -6,6 +6,7 @@ public class EmployeeAccount {
 	private Dollars federalIncomeTax;
 	private Dollars stateTax;
 	private Dollars netPay;
+	private boolean paid;
 
 	public Employee getEmployee() {
 		return employee;
@@ -63,6 +64,14 @@ public class EmployeeAccount {
 		this.netPay = netPay;
 	}
 
+	public boolean isPaid() {
+		return paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
+	}
+
 	public boolean pay() {
 		try {
 			this.setBasePay(calculateBasePay());
@@ -70,6 +79,7 @@ public class EmployeeAccount {
 			this.setFederalIncomeTax(this.getGrossPay().times(TaxRateService.getFederalIncomeTaxRate()));
 			this.setStateTax(calculateStateTax());
 			this.setNetPay(this.getGrossPay().minus(this.getFederalIncomeTax()).minus(this.getStateTax()));
+			this.setPaid(true);
 			return true;
 		} catch (Exception e) {
 			System.err.println(e.getStackTrace());

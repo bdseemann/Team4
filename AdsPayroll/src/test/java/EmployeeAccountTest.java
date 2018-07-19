@@ -1,8 +1,8 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by adeweese on 7/17/2018.
@@ -13,8 +13,7 @@ public class EmployeeAccountTest {
 	@Before
 	public void before() {
 		employee = new Employee();
-		subject = new EmployeeAccount();
-		employee.setAccount(subject);
+		subject = employee.getOpenAcount();
 	}
 
     @Test

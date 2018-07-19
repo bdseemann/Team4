@@ -14,22 +14,22 @@ public class PayrollFixture {
 	}
 
 	public String base() {
-		return employee.getAccount().getBasePay().toCleanString();
+		return employee.getLastPaidAccount().getBasePay().toCleanString();
 	}
 
 	public String gross() {
-		return employee.getAccount().getGrossPay().toCleanString();
+		return employee.getLastPaidAccount().getGrossPay().toCleanString();
 	}
 
 	public String federalTax() {
-		return employee.getAccount().getFederalIncomeTax().toCleanString();
+		return employee.getLastPaidAccount().getFederalIncomeTax().toCleanString();
 	}
 
 	public String stateTax() {
-		return employee.getAccount().getStateTax().toCleanString();
+		return employee.getLastPaidAccount().getStateTax().toCleanString();
 	}
 
 	public String net() {
-		return employee.getAccount().getNetPay().toCleanString();
+		return employee.getLastPaidAccount().getNetPay().toCleanString();
 	}
 }

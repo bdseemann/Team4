@@ -10,27 +10,27 @@ public class PaymentFixture {
     }
 
     public void setHoursWorked(double hoursWorked) {
-        this.subject.getAccount().setHoursWorked(hoursWorked);
+        this.subject.getOpenAcount().setHoursWorked(hoursWorked);
     }
 
     public boolean pay() {
-        return this.subject.pay();
+        return this.subject.getOpenAcount().pay();
     }
 
     public String basePay() {
-        return this.subject.getAccount().getBasePay().toCleanString();
+        return this.subject.getLastPaidAccount().getBasePay().toCleanString();
     }
 
     public String grossPay() {
-        return this.subject.getAccount().getGrossPay().toCleanString();
+        return this.subject.getLastPaidAccount().getGrossPay().toCleanString();
     }
 
     public String federalIncomeTax() {
-        return this.subject.getAccount().getFederalIncomeTax().toCleanString();
+        return this.subject.getLastPaidAccount().getFederalIncomeTax().toCleanString();
     }
 
     public String netPay() {
-        return this.subject.getAccount().getNetPay().toCleanString();
+        return this.subject.getLastPaidAccount().getNetPay().toCleanString();
     }
 
 }

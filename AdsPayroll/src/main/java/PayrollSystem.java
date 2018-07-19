@@ -29,7 +29,7 @@ public class PayrollSystem {
     public boolean pay() {
         try {
             for (Employee employee : employees) {
-                employee.pay();
+                employee.getOpenAcount().pay();
             }
             return true;
         } catch (Exception e) {

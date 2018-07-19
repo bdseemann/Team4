@@ -104,19 +104,18 @@ public class EmployeeAccount {
 			Calendar endCalendar = new GregorianCalendar();
 			endCalendar.setTime(payDate);
 
-			int diffYear = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
-			int diffMonth = diffYear * 12 + endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
+			if (startCalendar.get(Calendar.YEAR) == endCalendar.get(Calendar.YEAR)) {
 
-			if (diffMonth <= 3) {
-				this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
-				this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-				this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
-			}
+				if (startCalendar.get(Calendar.MONTH) % 4 == endCalendar.get(Calendar.MONTH) % 4) {
+					this.setQtdGross(previousAccount.getQtdGross().plus(this.getGrossPay()));
+					this.setQtdTax(previousAccount.getQtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+					this.setQtdNet(previousAccount.getQtdNet().plus(this.getNetPay()));
+				}
 
-			if (diffYear == 0) {
-				this.setYtdGross(previousAccount.getYtdGross().plus(this.getGrossPay()));
-				this.setYtdTax(previousAccount.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
-				this.setYtdNet(previousAccount.getYtdNet().plus(this.getNetPay()));
+			this.setYtdGross(previousAccount.getYtdGross().plus(this.getGrossPay()));
+			this.setYtdTax(previousAccount.getYtdTax().plus(this.getFederalIncomeTax()).plus(this.getStateTax()));
+			this.setYtdNet(previousAccount.getYtdNet().plus(this.getNetPay()));
+
 			}
 		}
 

@@ -3,9 +3,29 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeeAccount {
+	private static final Map<Integer, String> QUARTERS;
+
+	static {
+		QUARTERS = new HashMap<>();
+		QUARTERS.put(Calendar.JANUARY, "Q1");
+		QUARTERS.put(Calendar.FEBRUARY, "Q1");
+		QUARTERS.put(Calendar.MARCH, "Q1");
+		QUARTERS.put(Calendar.APRIL, "Q2");
+		QUARTERS.put(Calendar.MAY, "Q2");
+		QUARTERS.put(Calendar.JUNE, "Q2");
+		QUARTERS.put(Calendar.JULY, "Q3");
+		QUARTERS.put(Calendar.AUGUST, "Q3");
+		QUARTERS.put(Calendar.SEPTEMBER, "Q3");
+		QUARTERS.put(Calendar.OCTOBER, "Q4");
+		QUARTERS.put(Calendar.NOVEMBER, "Q4");
+		QUARTERS.put(Calendar.DECEMBER, "Q4");
+	}
+
 	private Employee employee;
 	private Dollars basePay;
 	private double hoursWorked;
@@ -133,22 +153,13 @@ public class EmployeeAccount {
 	}
 
 	private boolean inSameQuarter(int month1, int month2) {
-		if (month1 <= Calendar.MARCH) {
-			if (month2 <= Calendar.MARCH) {
-				return true;
-			}
-		} else if (month1 >= Calendar.APRIL && month1 <= Calendar.JUNE) {
-			if (month2 >= Calendar.APRIL && month2 <= Calendar.JUNE) {
-				return true;
-			}
-		} else if (month1 >= Calendar.JULY && month1 <= Calendar.SEPTEMBER) {
-			if (month2 >= Calendar.JULY && month2 <= Calendar.SEPTEMBER) {
-				return true;
-			}
-		} else if (month1 >= Calendar.OCTOBER && month2 >= Calendar.OCTOBER) {
-			return true;
-		}
-		return false;
+		String month1Quarter = getQuarter(month1);
+		String month2Quarter = getQuarter(month2);
+		return month1Quarter.equals(month2Quarter);
+	}
+
+	private String getQuarter(int appleSauce) {
+		return QUARTERS.get(appleSauce);
 	}
 
 	private Dollars calculateBasePay() {
@@ -216,11 +227,11 @@ public class EmployeeAccount {
 		this.ytdNet = ytdNet;
 	}
 
-	public void setPayDate(Date payDate) {
-		this.payDate = payDate;
-	}
-
 	public Date getPayDate() {
 		return payDate;
+	}
+
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
 	}
 }

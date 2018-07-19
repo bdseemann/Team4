@@ -1,5 +1,10 @@
 public class PayrollFixture {
 	private Employee employee;
+	private String payDate;
+
+	public void setPayDate(String payDate) {
+		this.payDate = payDate;
+	}
 
 	public boolean pay() {
 		return PayrollSystem.getInstance().pay();
@@ -31,5 +36,29 @@ public class PayrollFixture {
 
 	public String net() {
 		return employee.getLastPaidAccount().getNetPay().toCleanString();
+	}
+
+	public String qtdGross() {
+		return "Not Implemented";
+	}
+
+	public String qtdTax() {
+		return "Not Implemented";
+	}
+
+	public String qtdNet() {
+		return "Not Implemented";
+	}
+
+	public String ytdGross() {
+		return "Not Implemented";
+	}
+
+	public String ytdTax() {
+		return "Not Implemented";
+	}
+
+	public String ytdNet() {
+		return "Not Implemented";
 	}
 }

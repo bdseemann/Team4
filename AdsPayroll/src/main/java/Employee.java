@@ -76,7 +76,7 @@ public class Employee {
 	}
 
 	public EmployeeAccount getLastPaidAccount() {
-		for (int i = checks.size() - 1; i == 0; i--) {
+		for (int i = checks.size() - 1; i >= 0; i--) {
 			if (checks.get(i).isPaid()) {
 				return checks.get(i);
 			}
